@@ -4,7 +4,7 @@ import { Button } from "react-native-elements";
 import { StyleSheet, Text, View } from "react-native";
 
 const sendRequest = () => {
-  fetch("tijs.mooo.com/eten/addEten");
+  fetch("tijs.mooo.com:3000/eten/addEten");
 };
 
 export default function App() {
