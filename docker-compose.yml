@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  bot:
+    build:
+      context: ./discord
+      dockerfile: Dockerfile
+    env_file: ./discord/.env
+    image: bruhgaming/kom-eten-bot:latest
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: bruhgaming/kom-eten-backend:latest
+    ports:
+      - 3000:3000

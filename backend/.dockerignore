@@ -1,0 +1,7 @@
+# Thanks but no
+node_modules
+package-lock.json
+
+# Docker files
+Dockerfile
+.dockerignore
