@@ -1,14 +1,12 @@
-// import { scheduleJob } from "node-schedule";
-import readline from "readline";
-import OtterBot from "./OtterBot";
-import { version } from "../package.json";
+import MamBot from "./MamBot";
+
 import { OtterLogger } from "./utils/logger/OtterLogger";
+import { version } from "../package.json";
 
-const ENV = process.env.NODE_ENV || "";
-const IO = readline.createInterface(process.stdin, process.stdout);
-const logger: OtterLogger = new OtterLogger(IO);
+const ENV = process.env.NODE_ENV;
+const logger: OtterLogger = new OtterLogger();
 
-let welcome: String = String.raw`
+const welcome: String = String.raw`
 
  __    __     ______     __    __     ______     ______     ______  
 /\ "-./  \   /\  __ \   /\ "-./  \   /\  == \   /\  __ \   /\__  _\ 
@@ -23,16 +21,9 @@ logger.report(`Version: [${version}]`);
 logger.report(`Lauching mambot in ${ENV} environment...`);
 logger.report(`Logging in mambot...`);
 
-if (ENV === "production") {
-  console = console || {};
-  console.log = function () {};
-}
-
-const bot = new OtterBot(logger);
+const bot = new MamBot(logger);
 
 process.on("SIGINT", () => {
-  logger.report(`Logging out mambot...`);
   bot.logout();
-  logger.report(`Goodbye!`);
   process.exit(0);
 });

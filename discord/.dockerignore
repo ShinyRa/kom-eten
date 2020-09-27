@@ -12,6 +12,12 @@ package-lock.json
 # Secrets
 .env
 
+# Git related files
+assets/
+*.git
+*.gitignore
+*.md
+
 # Docker related files
 .dockerignore
 Dockerfile
